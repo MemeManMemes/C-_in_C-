@@ -3,26 +3,113 @@
 namespace System
 {
 	typedef uint8_t byte;
+	typedef int8_t sbyte;
+	
+	
+	
+	
+	struct
+	{
+		const int MaxValue = 2147483647;
+		const std::string MaxHexValue = "0x7FFFFFFF";
+		const int MinValue = -2147483648;
+		const std::string MinHexValue = "0x80000000";
+	} Int32;
+	struct
+	{
+		const uint MaxValue = 4294967295;
+		const std::string MaxHexValue = "0xFFFFFFFF";
+		const uint MinValue = 0;
+		const std::string MinHexValue = "0x0";
+	} UInt32;
+	
+	
+	struct
+	{
+		const byte MaxValue = 255;
+		const std::string MaxHexValue = "0xFF";
+		const byte MinValue = 0;
+		const std::string MinHexValue = "0x0";
+	} Byte;
+	struct
+	{
+		const sbyte MaxValue = 127;
+		const std::string MaxHexValue = "0x7F";
+		const sbyte MinValue = -128;
+		const std::string MinHexValue = "0x80";
+	} SByte;
+	
+	
+	struct
+	{
+		const long long MaxValue = 9223372036854775807;
+		const std::string MaxHexValue = "0x7FFFFFFFFFFFFFFF";
+		const long long MinValue = -9223372036854775808;
+		const std::string MinHexValue = "0x8000000000000000";
+	} Long;
+	struct
+	{
+		const unsigned long long MaxValue = 18446744073709551615;
+		const std::string MaxHexValue = "0xFFFFFFFFFFFFFFFF";
+		const unsigned long long MinValue = 0;
+		std::string MinHexValue = "0x0";
+	} ULong;
+	
+	
+	struct
+	{
+		const short MaxValue = 32767;
+		const std::string MaxHexValue = "0x7FFF";
+		const short MinValue = -32768;
+		const std::string MinHexValue = "0x8000";
+	} Short;
+	struct
+	{
+		const ushort MaxValue = 65535;
+		const std::string MaxHexValue = "0xFFFF";
+		const ushort MinValue = 0;
+		const std::string MinHexValue = "0x0";
+	} UShort;
+	
+	
+	
+	
 	class Console
 	{
 		public:
-		static void WriteLine(const char * writeline)
+		template <typename T>
+		static void WriteLine(T writeline)
 		{
 			std::cout << writeline << "\r\n";
 		}
-	
-		static void Write(const char * write)
+		
+		
+		template <typename T>
+		static void Write(T write)
 		{
-			printf(write);
+			std::cout << write;
 		}
-	
-		static std::string Read()
+		
+		
+		static std::string ReadLine()
 		{
-			std::string i;
-			std::cin >> i;
-			return i;
+			std::string s;
+			std::getline(std::cin, s);
+			return s;
 		}
+		
+		
+		
+		struct
+		{
+			std::string NewLine;
+			int ErrorReturn;
+		} Error;
 	};
+	
+	
+	
+	
 	class Convert
 	{
 		public:
